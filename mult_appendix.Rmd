@@ -1,0 +1,62 @@
+---
+title: "Analysis of the Multiplicative Model"
+author: "Jin H. Seok & Jeffrey N. Rouder"
+output: pdf_document
+---
+
+Let $i=1,\ldots,I$ denote the child in the study, and let $a_i$, $t_i$ denote the observed ANS and OTS accuracy scores, respectively.  Note that $a_i$ and $t_i$ are bounded between 0 and 1; i.e., they are restricted to the unit interval.  Let $c_i=0,1$ denote the observed cardinality-knower status of the $i$th child.  We assume there is some probability $p_i$ that the child has learned the cardinality property and that $c_i$ is an outcome from a Bernoulli trial with probability $p_i$.  The goal is to understand the influences of ANS and OTS on $p_i$.
+
+Note that $p_i$ like $a_i$ and $t_i$ is restricted to the unit interval.  The most natural operation to combine variables in this context is multiplication because the product of two variables on the unit interval remains on the unit interval.  Thus, the unit interval is said to be closed under multiplication.  Additionally, any variable on the unit interval can be transformed by a power function and the resultant remains on the unit interval.  The unit interval is closed under power-function transformations.  Hence a natural model that insures $p_i$ remains on the unit interval is 
+
+$$
+p_i = [a_i]^\alpha [t_i]^\beta, \;\; \alpha,\beta \geq 0.
+$$
+
+The exponents $\alpha$ and $\beta$ serve as weights that denote importance of the respective variables.  If one of these weights is 0, for example, the variable has no influence.  The greater the weight, the greater the contribution of the variable (Figure A1 shows the influence of exponential parameter $\alpha$ on a hypothetical variable X for various values of $\alpha$).  Hence the goal in analysis is to estimate $\alpha$ and $\beta$ and assess whether they are substantially different from 0.  The multiplicative model is more natural and has fewer parameters than the probit-regression counterparts because in this model there is no need for an intercept.
+
+The multiplicative model is conveniently analzyed in the Bayesian framework.  Prior distributions are needed for $\alpha$ and $\beta$.    The exponential is a seemingly suitable choice as it places mass on only positve values, favors smaller values, and has a thin tail:
+$$
+\alpha \sim \mbox{Exp}(\lambda_{\alpha}),\\
+$$
+and
+$$
+\beta \sim \mbox{Exp}(\lambda_{\beta}).\\
+$$
+Prior settings  on rates $\lambda_{\alpha}$ and $\lambda_{\beta}$ are chosen before analysis.  We explored the predictions of the model under a number of choices and found that $\lambda_\alpha=\lambda_\beta=.5$ resulted in a wide range of plausible predictions.  We discuss robustness checks to this choice subsequently.  
+
+The likelihood function for the model is 
+$$
+L(\alpha,\beta ; a, t, c) = \Pi_i [(a_i^\alpha t_i^\beta)^{c_i}(1-a_i^\alpha t_i^\beta)^{1-c_i}],
+$$
+and the joint posterior distribution over the two parameters is
+$$
+f(\alpha,\beta | a, t, c) \propto \Pi[(a_i^\alpha t_i^\beta)^{c_i}(1-a_i^\alpha t_i^\beta)^{1-c_i}]\lambda_{\alpha}e^{-\lambda_{\alpha}}\lambda_{\beta}e^{-\lambda_{\beta}}
+$$
+This joint posterior does not follow any form known to us, and so we obtained marginal posterior distributions of the parameters using Markov chain Monte Carlo sampling with Metropolis-Hatings steps (Gelman, Carlin, Stern, and Rubin, 2004).  The Metropolis candidate was tuned for acceptance rates between .40 and .45 for all parameters and all runs.  Sampling continued for 10,000 iterations with the first 1,000 iterations discarded as a burn-in period.  The resulting chains showed a modest amount of autocorrelations and were thinned by a factor of 10.  Figure A2 shows the outputs for parameter $\alpha$ at T1 after thinning (the outputs for $\beta$ at T1 as well as $\alpha$ and $\beta$ at T2 were similar).  The relatively small degree of autocorrelation is further evidenced by the autocorrelation plot (Figure A3).  
+
+Posterior distriutions for $\alpha$ and $\beta$ at T1 and T2 are provided in Figure 3 in the text.  To assess the robustness of the analysis to the choice of prior settings, we reran it with different settings.  The rates were increased by a factor of four ($\lambda_\alpha=\lambda_\beta=2$) and decreased by a factor of four ($\lambda_\alpha=\lambda_\beta=.125$).  The effect of this combined factor of 16 was minimal---the posterior means of $\alpha$ and $\beta$ varied by about 5\%.  Hence, the findings are not unduly sensitive to prior settings.
+
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, results="hide"}
+#set up screen for plot layout
+split.screen(figs = c( 2, 1 ))
+split.screen(figs = c( 1, 3 ), screen = 1) ##  Split screen 1 into one row and three columns, defining screens 3, 4, and 5.
+split.screen(figs = c( 1, 2 ), screen = 2) ##  Split screen 2 into one row and two columns, defining screens 6 and 7.
+
+screen(4)
+par(mgp=c(1.3,.5,0), mar=c(3, 3, 1, .1), cex=.7)
+source('exp_fig.R')
+mtext("Figure A1", side=1, line=2.2, adj=1, cex=.7, col="blue")
+source('mult_model_T1.R')
+
+filter=seq(1000,10000,10)
+screen(6)
+par(mgp=c(1.3,.5,0), mar=c(4, 7, 1, 2), cex=.7)
+plot(alpha[filter],typ='l',xlab="Cycle",ylab=expression(paste("Parameter ",alpha)))
+mtext("Figure A2", side=1, line=2.2, adj=1, cex=.7, col="blue")
+
+screen(7)
+par(mgp=c(1.3,.5,0), mar=c(4, 7, 1, 2), cex=.7)
+acf(alpha[filter],main="")
+mtext("Figure A3", side=1, line=2.5, adj=1, cex=.7, col="blue")
+```
