@@ -1,6 +1,6 @@
 ## Bayesian analysis of "multiplicative" model
 
-The work here includes several files pertaining to the Bayesian analysis of the multiplicative model presented in a recently submitted paper on children's knowledge of cardinality (vanMarle, Chu, Mou, Seok, Rouder, & Geary, under review). Please see article [appendix](mult_appendix.pdf) for modeling details.
+The work here includes several files pertaining to the Bayesian analysis of the multiplicative model presented in a recently submitted paper on children's knowledge of cardinality (vanMarle, Chu, Mou, Seok, Rouder, & Geary, under review). Please see article [appendix](mult_appendix.pdf) for modeling details. Note: dataset is propietary and is not shared here.
 
 ## Project overview
 
@@ -8,4 +8,6 @@ Children’s understanding of the quantities represented by number words (i.e., 
 
 ## 3D visualization of data fitted to multiplicative model
 
-Click [here](https://jin-h-seok.shinyapps.io/Cardinality) to goto shiny app. 
+Click [here](https://jin-h-seok.shinyapps.io/Cardinality) to goto shiny app.
+
+
