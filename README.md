@@ -1,6 +1,6 @@
 ## Bayesian analysis of cardinality data
 
-The work here includes several files pertaining to the Bayesian analysis of the "multiplicative" model presented in a recently submitted paper on children's knowledge of cardinality (vanMarle, Chu, Mou, Seok, Rouder, & Geary, under review). Please see article [appendix](mult_appendix.html) for modeling details.
+The work here includes several files pertaining to the Bayesian analysis of the "multiplicative" model presented in a recently submitted paper on children's knowledge of cardinality (vanMarle, Chu, Mou, Seok, Rouder, & Geary, under review). Please see article [appendix](mult_appendix.pdf) for modeling details.
 
 ## Project overview
 
