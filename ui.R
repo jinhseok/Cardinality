@@ -7,7 +7,7 @@ shinyUI(fluidPage(
   mainPanel(
     "Click and drag to spin plot. Zoom in and out with two-finger swipe (or equivalent mouse action).",
     "Green points indicate CP-Knowers and red points indicate non-CP-Knowers. Note how the prediction plane flexes less at T2 compared to T1. This shows the diminished influence of OTS at the later time point.",
-    "See ",a("mult_appendix",href="")," for model details.",
+    "See ",a("mult_appendix",href="https://github.com/jinhseok/Cardinality/blob/master/mult_appendix.html")," for model details.",
     webGLOutput("threedplot",width=800,height=800)
   )
 ))
