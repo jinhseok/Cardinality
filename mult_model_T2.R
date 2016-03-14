@@ -4,7 +4,7 @@
 library(MCMCpack)
 set.seed(8285)
 setwd("~/Desktop/Analysis/Cardinality")
-data=read.csv(file="Y1_ABC_clean.csv")
+data=read.csv(file="~/Desktop/Analysis/PS_Data/Y1_ABC_clean.csv")
 #save only variables that are needed to X
 a=data$Num_T2/100 #ANS acc at T2
 t=data$MagBox_T2/100  #OTS acc at T2

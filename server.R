@@ -4,7 +4,7 @@ library(shiny)
 library(rgl)
 library(grid)
 
-data=read.csv(file="ABCY1Y2MI.csv")
+data=read.csv(file="~/Desktop/Analysis/PS_Data/ABCY1Y2MI.csv")
 a1=data$y1dqdaccT1/100
 t1=data$y1mbT1/100
 c1=ifelse(data$y1gnT1>3,1,0)
