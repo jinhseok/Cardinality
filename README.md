@@ -8,4 +8,4 @@ Children’s understanding of the quantities represented by number words (i.e., 
 
 ## 3D Visualization of data fitted to mult model
 
-Click [here](jin-h-seok.shinyapps.io/Cardinality) to goto shiny app. 
+Click [here](https://jin-h-seok.shinyapps.io/Cardinality) to goto shiny app. 
